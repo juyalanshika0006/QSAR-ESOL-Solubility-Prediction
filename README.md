@@ -1,39 +1,39 @@
-
 # 🧪 QSAR-ESOL-Solubility-Prediction
 
-An end-to-end QSAR (Quantitative Structure–Activity Relationship) machine learning project that predicts the aqueous solubility (logS) of small molecules using RDKit and Scikit-learn.
+An end-to-end QSAR (Quantitative Structure–Activity Relationship) machine learning project for predicting the aqueous solubility (logS) of small molecules using RDKit, molecular descriptors, Morgan fingerprints, and multiple regression algorithms.
 
 ---
 
 ## 📖 Project Overview
 
-Drug solubility is one of the most important physicochemical properties in drug discovery. Poorly soluble compounds often show poor absorption and bioavailability.
+Aqueous solubility is one of the most important physicochemical properties in drug discovery because it directly affects drug absorption, bioavailability, and formulation.
 
-This project uses the ESOL dataset to build a machine learning model capable of predicting molecular solubility directly from chemical structures.
+This project demonstrates a complete cheminformatics and machine learning workflow using the ESOL dataset. Molecular structures are processed with RDKit, transformed into numerical features, and used to train multiple regression models for solubility prediction.
 
 ---
 
 ## 🎯 Objectives
 
-- Perform exploratory data analysis (EDA)
+- Explore and understand the ESOL dataset
 - Process molecular structures using RDKit
-- Generate molecular descriptors
+- Calculate molecular descriptors
 - Generate Morgan fingerprints
-- Train machine learning models
-- Evaluate regression performance
-- Predict solubility of unseen molecules
+- Perform exploratory visualization
+- Train multiple regression models
+- Compare different molecular representations
+- Evaluate predictive performance
 
 ---
 
 ## 📂 Dataset
 
-Dataset: ESOL (Delaney)
+**Dataset:** ESOL (Delaney)
 
-Target Variable:
+**Target Variable:**
 
 Measured Log Solubility (logS)
 
-Number of molecules:
+**Number of Molecules:**
 
 1128
 
@@ -45,8 +45,10 @@ Number of molecules:
 - Pandas
 - NumPy
 - Matplotlib
+- Seaborn
 - RDKit
 - Scikit-learn
+- XGBoost
 
 ---
 
@@ -56,88 +58,133 @@ Number of molecules:
 QSAR-ESOL-Solubility-Prediction/
 │
 ├── data/
+│   ├── raw/
+│   └── processed/
+│
 ├── notebooks/
+│   ├── 01_eda.ipynb
+│   ├── 02_feature_engineering.ipynb
+│   ├── 03_visualization.ipynb
+│   └── 04_machine_learning.ipynb
+│
 ├── figures/
 ├── models/
-├── src/
 ├── README.md
 └── requirements.txt
 ```
 
 ---
 
-## 🚀 Workflow
+## 🔬 Workflow
 
-Dataset
-
-↓
-
-Data Exploration
-
-↓
-
-Data Cleaning
-
-↓
-
-RDKit Molecule Generation
-
-↓
-
-Descriptors
-
-↓
-
-Morgan Fingerprints
-
-↓
-
-Machine Learning
-
-↓
-
-Model Evaluation
-
-↓
-
-Prediction
+```text
+ESOL Dataset
+      │
+      ▼
+Exploratory Data Analysis
+      │
+      ▼
+RDKit Molecule Processing
+      │
+      ▼
+Descriptor Calculation
+      │
+      ▼
+Morgan Fingerprint Generation
+      │
+      ▼
+Feature Engineering
+      │
+      ▼
+Exploratory Visualization
+      │
+      ▼
+Machine Learning Models
+      │
+      ▼
+Performance Evaluation
+```
 
 ---
 
-## 📊 Current Progress
+## 🤖 Machine Learning Models
 
-- [x] Phase 1 — Exploratory Data Analysis
-- [ ] Phase 2 — Data Cleaning
-- [ ] Phase 3 — RDKit Feature Engineering
-- [ ] Phase 4 — Fingerprint Generation
-- [ ] Phase 5 — Model Training
-- [ ] Phase 6 — Model Evaluation
-- [ ] Phase 7 — Prediction
+The following regression models were implemented:
+
+- Linear Regression
+- Random Forest Regressor
+- Gradient Boosting Regressor
+- XGBoost Regressor
+
+Each model was trained using three different feature representations:
+
+- Molecular Descriptors
+- Morgan Fingerprints
+- Combined Descriptors + Morgan Fingerprints
+
+This results in **12 independent machine learning experiments** for comparative analysis.
 
 ---
 
-## 📈 Results
+## 📊 Exploratory Visualization
 
-(To be updated after model training.)
+Visualizations include:
+
+- Solubility Distribution
+- Molecular Weight Distribution
+- LogP Distribution
+- TPSA Distribution
+- Correlation Heatmap
+- Descriptor Relationship Scatter Plots
+- Pairwise Descriptor Analysis
+
+---
+
+## 📈 Current Progress
+
+- ✅ Phase 1 – Exploratory Data Analysis
+- ✅ Phase 2 – RDKit Processing & Feature Engineering
+- ✅ Phase 3 – Exploratory Visualization
+- ✅ Phase 4 – Machine Learning Model Development
+- ⏳ Phase 5 – Model Evaluation & Comparison
+- ⏳ Phase 6 – Hyperparameter Tuning
+- ⏳ Phase 7 – Explainable AI (Feature Importance & SHAP)
+- ⏳ Phase 8 – Final Report & Documentation
 
 ---
 
 ## 📚 Skills Demonstrated
 
-- Exploratory Data Analysis
 - Cheminformatics
-- Molecular Descriptors
-- Molecular Fingerprints
-- Regression
+- RDKit
+- Molecular Descriptor Calculation
+- Morgan Fingerprints
 - Feature Engineering
+- Exploratory Data Analysis
+- Data Visualization
+- Regression Modeling
+- Random Forest
+- Gradient Boosting
+- XGBoost
 - Drug Discovery Machine Learning
+
+---
+
+## 🚀 Future Improvements
+
+- Hyperparameter optimization using GridSearchCV
+- Cross-validation
+- SHAP explainability
+- Model serialization
+- Predicting solubility for new molecules
+- Interactive visualization dashboard
 
 ---
 
 ## 👩‍💻 Author
 
-Anshika Juyal
+**Anshika Juyal**
 
 B.Sc. Biotechnology
 
-Interested in AI for Drug Discovery and Computational Biology
+Interested in AI for Drug Discovery, Cheminformatics, and Computational Biology.
