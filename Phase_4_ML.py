@@ -10,7 +10,7 @@ from sklearn.ensemble import (
 )
 
 from xgboost import XGBRegressor
-
+import joblib
 # Load Processed Dataset
 df = pd.read_csv("ESOL_processed.csv")
 
@@ -215,6 +215,28 @@ xgb_comb.fit(
 xgb_comb_predictions = xgb_comb.predict(
     X_test_comb
 )
+#combing all predictions into a single DataFrame for each model
+xgb_model=pd.DataFrame({
+    "XGB_Combined": xgb_comb_predictions,
+    "XGB_Fingerprints": xgb_fp_predictions,
+    "XGB_Descriptors": xgb_desc_predictions
+})
+gb_model=pd.DataFrame({
+    "GBR_Combined": gbr_comb_predictions,
+    "GBR_Fingerprints": gbr_fp_predictions,
+    "GBR_Descriptors": gbr_desc_predictions
+})
+rf_model=pd.DataFrame({
+    "RF_Combined": rf_comb_predictions, 
+    "RF_Fingerprints": rf_fp_predictions,
+    "RF_Descriptors": rf_desc_predictions
+})
+linear_regressor=pd.DataFrame({
+    "LR_Combined": lr_comb_predictions,
+    "LR_Fingerprints": lr_fp_predictions,
+    "LR_Descriptors": lr_desc_predictions
+})
+
 #storing all predictions in a dictionary
 predictions = {
     "LR_Descriptors": lr_desc_predictions,
@@ -239,3 +261,8 @@ print("Models trained successfully!")
 print()
 
 print("Total models:", len(predictions))
+
+joblib.dump(linear_regressor, "linear_regression_model.pkl")
+joblib.dump(rf_model, "random_forest_model.pkl")
+joblib.dump(gb_model, "gradient_boosting_model.pkl")
+joblib.dump(xgb_model, "xgboost_model.pkl")
