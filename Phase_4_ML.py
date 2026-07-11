@@ -262,7 +262,71 @@ print()
 
 print("Total models:", len(predictions))
 
-joblib.dump(linear_regressor, "linear_regression_model.pkl")
-joblib.dump(rf_model, "random_forest_model.pkl")
-joblib.dump(gb_model, "gradient_boosting_model.pkl")
-joblib.dump(xgb_model, "xgboost_model.pkl")
+# Save Trained Models
+
+# Linear Regression Models
+joblib.dump(
+    lr_desc,
+    "lr_desc.pkl"
+)
+
+joblib.dump(
+    lr_fp,
+    "lr_fp.pkl"
+)
+
+joblib.dump(
+    lr_comb,
+    "lr_comb.pkl"
+)
+
+# Random Forest Models
+joblib.dump(
+    rf_desc,
+    "rf_desc.pkl"
+)
+
+joblib.dump(
+    rf_fp,
+    "rf_fp.pkl"
+)
+
+joblib.dump(
+    rf_comb,
+    "rf_comb.pkl"
+)
+
+# Gradient Boosting Models
+joblib.dump(
+    gbr_desc,
+    "gbr_desc.pkl"
+)
+
+joblib.dump(
+    gbr_fp,
+    "gbr_fp.pkl"
+)
+
+joblib.dump(
+    gbr_comb,
+    "gbr_comb.pkl"
+)
+
+# XGBoost Models
+joblib.dump(
+    xgb_desc,
+    "xgb_desc.pkl"
+)
+
+joblib.dump(
+    xgb_fp,
+    "xgb_fp.pkl"
+)
+
+joblib.dump(
+    xgb_comb,
+    "xgb_comb.pkl"
+)
+
+print()
+print("All trained models have been saved successfully!")
