@@ -1,0 +1,21 @@
+SMILES,Predicted_Solubility,Solubility_Class
+CCO,0.84391,Highly Soluble
+CCN,0.63173664,Highly Soluble
+CCC,-1.7157747,Moderately Soluble
+CC(=O)O,0.67512894,Highly Soluble
+c1ccccc1,-1.6597409,Moderately Soluble
+CC(C)O,0.59385294,Highly Soluble
+CCOC(=O)C,0.08951036,Highly Soluble
+CC(C)CC,-2.7340572,Moderately Soluble
+CCOCC,-0.26639122,Soluble
+CCN(CC)CC,-1.4995248,Moderately Soluble
+C1CCCCC1,-3.0274785,Poorly Soluble
+CC(C)(C)O,0.32783067,Highly Soluble
+CC(C)C(=O)O,-0.26168084,Soluble
+CCOC,-0.059437457,Soluble
+CC(C)N,0.49513525,Highly Soluble
+CCCl,-0.92255104,Soluble
+CCBr,-1.1645242,Moderately Soluble
+COC,0.6661586,Highly Soluble
+CC(C)CO,0.08400124,Highly Soluble
+c1ccncc1,0.96911025,Highly Soluble
