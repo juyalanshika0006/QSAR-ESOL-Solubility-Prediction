@@ -1,190 +1,347 @@
-# 🧪 QSAR-ESOL-Solubility-Prediction
+# 🧪 QSAR ESOL Solubility Prediction Using Machine Learning
 
-An end-to-end QSAR (Quantitative Structure–Activity Relationship) machine learning project for predicting the aqueous solubility (logS) of small molecules using RDKit, molecular descriptors, Morgan fingerprints, and multiple regression algorithms.
+A complete end-to-end **Quantitative Structure–Activity Relationship (QSAR)** project that predicts the aqueous solubility (ESOL) of chemical compounds using molecular descriptors, Morgan fingerprints, and multiple machine learning algorithms.
 
----
-
-## 📖 Project Overview
-
-Aqueous solubility is one of the most important physicochemical properties in drug discovery because it directly affects drug absorption, bioavailability, and formulation.
-
-This project demonstrates a complete cheminformatics and machine learning workflow using the ESOL dataset. Molecular structures are processed with RDKit, transformed into numerical features, and used to train multiple regression models for solubility prediction.
+This project demonstrates the complete drug discovery machine learning workflow—from raw molecular data to model interpretation and virtual screening.
 
 ---
 
-## 🎯 Objectives
+## 📌 Project Overview
 
-- Explore and understand the ESOL dataset
-- Process molecular structures using RDKit
-- Calculate molecular descriptors
-- Generate Morgan fingerprints
-- Perform exploratory visualization
-- Train multiple regression models
-- Compare different molecular representations
-- Evaluate predictive performance
+The objective of this project is to build an accurate machine learning model capable of predicting molecular solubility from SMILES strings.
 
----
+The workflow includes:
 
-## 📂 Dataset
-
-**Dataset:** ESOL (Delaney)
-
-**Target Variable:**
-
-Measured Log Solubility (logS)
-
-**Number of Molecules:**
-
-1128
+- Data preprocessing
+- Molecular descriptor generation
+- Molecular fingerprint generation
+- Exploratory Data Analysis (EDA)
+- Machine Learning model development
+- Hyperparameter tuning
+- Explainable AI (SHAP)
+- Virtual screening pipeline
 
 ---
 
-## 🛠️ Technologies Used
+## 🧬 Dataset
+
+Dataset used:
+
+- **Delaney ESOL Dataset**
+- Contains experimentally measured aqueous solubility values.
+- Molecular structures represented as SMILES strings.
+
+Target Variable:
+
+- **Measured Log Solubility (logS)**
+
+---
+
+# 📂 Project Structure
+
+```
+QSAR_ESOL_Project/
+
+│
+├── Phase_1_Data_exploration.py
+├── Phase_2_Data_Cleaning_and_RDKit_Processing.py
+├── Phase_3_Exploratory_Visualization.py
+├── Phase_4_ML.py
+├── Phase_5_model_evaluation_and_comparison.py
+├── Phase_6_Hypertuning_Tuning_and_Model_Optimisation.py
+├── Phase_7_Explainable_AI.py
+├── Phase_8_Virtual_screening_and_pipeline_prediction.py
+│
+├── ESOL_processed.csv
+├── delaney-processed.csv
+│
+├── *.pkl
+├── *.png
+├── predicted_solubility.csv
+│
+└── README.md
+```
+
+---
+
+# ⚙️ Technologies Used
 
 - Python
+- RDKit
 - Pandas
 - NumPy
 - Matplotlib
 - Seaborn
-- RDKit
 - Scikit-learn
 - XGBoost
+- SHAP
+- Joblib
 
 ---
 
-## 📁 Project Structure
+# 🧪 Phase 1 — Data Exploration
 
-```text
-QSAR-ESOL-Solubility-Prediction/
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── notebooks/
-│   ├── 01_eda.ipynb
-│   ├── 02_feature_engineering.ipynb
-│   ├── 03_visualization.ipynb
-│   └── 04_machine_learning.ipynb
-│
-├── figures/
-├── models/
-├── README.md
-└── requirements.txt
-```
+Performed:
+
+- Loaded the ESOL dataset
+- Dataset inspection
+- Missing value analysis
+- Duplicate detection
+- Statistical summary
+- Target distribution analysis
+
+Outputs:
+
+- Dataset statistics
+- Clean dataset overview
 
 ---
 
-## 🔬 Workflow
+# 🧪 Phase 2 — Molecular Feature Engineering
 
-```text
-ESOL Dataset
-      │
-      ▼
-Exploratory Data Analysis
-      │
-      ▼
-RDKit Molecule Processing
-      │
-      ▼
-Descriptor Calculation
-      │
-      ▼
-Morgan Fingerprint Generation
-      │
-      ▼
-Feature Engineering
-      │
-      ▼
-Exploratory Visualization
-      │
-      ▼
-Machine Learning Models
-      │
-      ▼
-Performance Evaluation
-```
+Generated molecular descriptors using RDKit:
+
+- Molecular Weight
+- LogP
+- TPSA
+- Hydrogen Bond Donors
+- Rotatable Bonds
+- Ring Count
+
+Generated Morgan Fingerprints:
+
+- Radius = 2
+- Fingerprint Size = 1024 bits
+
+Combined descriptors and fingerprints into a machine learning feature matrix.
 
 ---
 
-## 🤖 Machine Learning Models
+# 📊 Phase 3 — Exploratory Data Analysis
 
-The following regression models were implemented:
+Visualizations created:
 
-- Linear Regression
-- Random Forest Regressor
-- Gradient Boosting Regressor
-- XGBoost Regressor
-
-Each model was trained using three different feature representations:
-
-- Molecular Descriptors
-- Morgan Fingerprints
-- Combined Descriptors + Morgan Fingerprints
-
-This results in **12 independent machine learning experiments** for comparative analysis.
-
----
-
-## 📊 Exploratory Visualization
-
-Visualizations include:
-
-- Solubility Distribution
-- Molecular Weight Distribution
-- LogP Distribution
-- TPSA Distribution
+- Solubility distribution
+- Molecular Weight distribution
+- LogP distribution
 - Correlation Heatmap
-- Descriptor Relationship Scatter Plots
-- Pairwise Descriptor Analysis
+- Pairplot
+- Descriptor relationships
+
+Purpose:
+
+- Understand feature distributions
+- Detect feature correlations
+- Explore molecular property relationships
 
 ---
 
-## 📈 Current Progress
+# 🤖 Phase 4 — Machine Learning Models
 
-- ✅ Phase 1 – Exploratory Data Analysis
-- ✅ Phase 2 – RDKit Processing & Feature Engineering
-- ✅ Phase 3 – Exploratory Visualization
-- ✅ Phase 4 – Machine Learning Model Development
-- ⏳ Phase 5 – Model Evaluation & Comparison
-- ⏳ Phase 6 – Hyperparameter Tuning
-- ⏳ Phase 7 – Explainable AI (Feature Importance & SHAP)
-- ⏳ Phase 8 – Final Report & Documentation
+Implemented multiple regression models:
+
+### Linear Regression
+
+- Descriptor Model
+- Fingerprint Model
+- Combined Features Model
+
+### Random Forest Regressor
+
+- Descriptor Model
+- Fingerprint Model
+- Combined Features Model
+
+### Gradient Boosting Regressor
+
+- Descriptor Model
+- Fingerprint Model
+- Combined Features Model
+
+### XGBoost Regressor
+
+- Descriptor Model
+- Fingerprint Model
+- Combined Features Model
+
+Models were saved using Joblib for future prediction.
 
 ---
 
-## 📚 Skills Demonstrated
+# 📈 Phase 5 — Model Evaluation
 
-- Cheminformatics
-- RDKit
-- Molecular Descriptor Calculation
-- Morgan Fingerprints
-- Feature Engineering
-- Exploratory Data Analysis
-- Data Visualization
-- Regression Modeling
+Evaluation metrics:
+
+- R² Score
+- Mean Absolute Error (MAE)
+- Mean Squared Error (MSE)
+- Root Mean Squared Error (RMSE)
+
+Visualization:
+
+- Actual vs Predicted Plot
+- Residual Plot
+- Residual Distribution
+- Model Comparison
+
+---
+
+# ⚡ Phase 6 — Hyperparameter Optimization
+
+Performed hyperparameter tuning using:
+
+- GridSearchCV
+
+Optimized:
+
 - Random Forest
 - Gradient Boosting
 - XGBoost
-- Drug Discovery Machine Learning
+
+Compared tuned models against baseline models.
+
+Best performing model selected and saved.
 
 ---
 
-## 🚀 Future Improvements
+# 🔍 Phase 7 — Explainable AI (XAI)
 
-- Hyperparameter optimization using GridSearchCV
-- Cross-validation
-- SHAP explainability
-- Model serialization
-- Predicting solubility for new molecules
-- Interactive visualization dashboard
+Used SHAP (SHapley Additive Explanations) to interpret model predictions.
+
+Generated:
+
+- SHAP Summary Plot
+- SHAP Waterfall Plot
+- SHAP Dependence Plot
+- Permutation Importance
+- Feature Importance
+
+Purpose:
+
+- Understand global feature importance
+- Explain individual predictions
+- Improve model interpretability
 
 ---
 
-## 👩‍💻 Author
+# 🚀 Phase 8 — Virtual Screening Pipeline
+
+Built a prediction pipeline capable of:
+
+- Reading new molecules from CSV
+- Validating SMILES strings
+- Calculating RDKit descriptors
+- Generating Morgan fingerprints
+- Loading trained XGBoost model
+- Predicting solubility
+- Saving predictions to CSV
+
+Pipeline handles invalid SMILES gracefully.
+
+Output:
+
+```
+predicted_solubility.csv
+```
+
+---
+
+# 📈 Best Model
+
+The best performing model after optimization:
+
+✅ XGBoost Regressor
+
+Used for:
+
+- Virtual Screening
+- Batch Prediction
+- Future Deployment
+
+---
+
+# 🧠 Machine Learning Workflow
+
+```
+SMILES
+   │
+   ▼
+RDKit
+   │
+   ▼
+Descriptors + Morgan Fingerprints
+   │
+   ▼
+Feature Matrix
+   │
+   ▼
+Machine Learning Models
+   │
+   ▼
+Hyperparameter Tuning
+   │
+   ▼
+Explainable AI (SHAP)
+   │
+   ▼
+Virtual Screening Pipeline
+```
+
+---
+
+# 💡 Key Skills Demonstrated
+
+- QSAR Modeling
+- Molecular Feature Engineering
+- RDKit
+- Data Cleaning
+- Exploratory Data Analysis
+- Machine Learning
+- Model Evaluation
+- Hyperparameter Optimization
+- Explainable AI
+- SHAP
+- XGBoost
+- Virtual Screening
+- Drug Discovery Workflow
+
+---
+
+# 📚 Future Improvements
+
+Planned future enhancements include:
+
+- Streamlit Web Application
+- Batch Molecule Prediction
+- Molecular Structure Visualization
+- Model Deployment
+- Docker Support
+- Cloud Deployment
+- REST API
+- CI/CD Integration
+
+---
+
+# 👩‍💻 Author
 
 **Anshika Juyal**
 
 B.Sc. Biotechnology
 
-Interested in AI for Drug Discovery, Cheminformatics, and Computational Biology.
+Interested in:
+
+- Drug Discovery
+- Bioinformatics
+- Machine Learning
+- Computational Biology
+- AI in Healthcare
+
+---
+
+# ⭐ Acknowledgements
+
+- RDKit
+- Scikit-learn
+- XGBoost
+- SHAP
+- Delaney ESOL Dataset
