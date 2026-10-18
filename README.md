@@ -36,7 +36,31 @@ Target Variable:
 - **Measured Log Solubility (logS)**
 
 ---
+## 📈 Model Performance & Results
 
+The models were evaluated using R² Score, Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE). Below is the comparison of baseline models across different feature sets (Descriptors, Morgan Fingerprints, and Combined).
+
+| Rank | Model | Feature Set | R² Score |
+| :--- | :--- | :--- | :--- |
+| 1 | Gradient Boosting | Combined (Descriptors + FP) | **0.89** |
+| 2 | XGBoost | Combined (Descriptors + FP) | **0.88** |
+| 3 | Gradient Boosting | Descriptors Only | 0.87 |
+| 4 | Random Forest | Combined (Descriptors + FP) | 0.87 |
+| 5 | Random Forest | Descriptors Only | 0.86 |
+| 6 | XGBoost | Descriptors Only | 0.86 |
+| 7 | Linear Regression | Descriptors Only | 0.75 |
+| 8 | XGBoost | Fingerprints Only | 0.72 |
+| 9 | Random Forest | Fingerprints Only | 0.71 |
+| 10 | Gradient Boosting | Fingerprints Only | 0.66 |
+| 11 | Linear Regression | Combined (Descriptors + FP) | -2.52 |
+| 12 | Linear Regression | Fingerprints Only | -4.26 |
+
+**Key Takeaways:**
+* **Feature Engineering Impact:** Tree-based models (Gradient Boosting, XGBoost, Random Forest) performed exceptionally well with both Descriptors and Combined features. 
+* **Curse of Dimensionality:** Linear Regression failed when presented with high-dimensional Morgan Fingerprints (R² < 0), proving the necessity of non-linear models for QSAR tasks.
+* **Final Selection:** After baseline evaluation, **XGBoost** was selected for hyperparameter tuning (Phase 6) due to its high performance and efficiency, becoming the final model deployed in the virtual screening pipeline.
+
+_ _ _
 # 📂 Project Structure
 
 ```
@@ -246,18 +270,11 @@ predicted_solubility.csv
 
 ---
 
-# 📈 Best Model
+## 🏆 Final Model Selection
 
-The best performing model after optimization:
+While Gradient Boosting achieved the highest baseline R² score (0.89), **XGBoost** was selected as the final model for deployment. 
 
-✅ XGBoost Regressor
-
-Used for:
-
-- Virtual Screening
-- Batch Prediction
-- Future Deployment
-
+Following hyperparameter optimization using **GridSearchCV (Phase 6)**, the tuned XGBoost model demonstrated the best generalization and was saved (`best_xgboost.pkl`) for use in the Virtual Screening Pipeline.
 ---
 
 # 🧠 Machine Learning Workflow
